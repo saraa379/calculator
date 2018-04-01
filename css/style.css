@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+body{
+  width: 100%;
+  background-color: #101010;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.calcWrap {
+  min-width: 200px;
+  width: 500px;
+  min-height: 500px;
+  border: 1px solid white;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+.resultScreen {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #222222;
+  height: 100px;
+}
+
+h1 {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  font-weight: normal;
+  margin-left: 20px;
+  letter-spacing: 0.7px;
+}
+
+
+
+/** MEDIA QUERIES*/
+@media screen and (min-width: 501px){
+ 
+}
