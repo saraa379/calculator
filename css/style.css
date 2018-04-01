@@ -18,7 +18,7 @@ body{
   min-width: 200px;
   width: 500px;
   min-height: 500px;
-  border: 1px solid white;
+  border: 3px solid #222222;
   margin: 0 auto;
   margin-top: 70px;
 }
@@ -26,7 +26,6 @@ body{
   margin-left: 20px;
   margin-right: 20px;
   background-color: #222222;
-  height: 100px;
 }
 
 h1 {
@@ -38,10 +37,18 @@ h1 {
   margin-left: 20px;
   letter-spacing: 0.7px;
 }
+.innerResult {
+  min-height: 50px;
+  margin-right: 20px;
+  margin-left: 20px;
+  color: white;
+  text-align: right;
+  vertical-align: middle;
+}
 
 
 
 /** MEDIA QUERIES*/
-@media screen and (min-width: 501px){
+@media screen and (max-width: 500px){
  
 }
