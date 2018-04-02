@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
 		}, // data
 
 		methods: {
-			show: function(event) {
+			saveNumber: function(event) {
 				this.displayStatus = true;
 			},
 			hide: function(event) {

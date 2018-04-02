@@ -12,15 +12,15 @@ body{
 #root {
   height: 100%;
   width: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .calcWrap {
-  min-width: 200px;
+  min-width: 250px;
   width: 500px;
-  min-height: 500px;
   border: 3px solid #222222;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 95px;
 }
 .resultScreen {
   margin-left: 20px;
@@ -39,16 +39,165 @@ h1 {
 }
 .innerResult {
   min-height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-right: 20px;
   margin-left: 20px;
   color: white;
   text-align: right;
   vertical-align: middle;
 }
+#allOperation {
+  font-size: 1.5rem;
+  color: #222222;
+}
+#result {
+  font-size: 2rem;
+}
+.form {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 30px;
+  color: white;
+  margin-bottom: 10px;
+}
+ .form label {
+    margin-right: 10px;
+    font-size: 1rem;
+ }
+ .form input {
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: #222222;
+    border: none;
+    color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 150px;
+ }
+ .form button {
+    width: 81px;
+    height: 28px;
+    background-color: #222222;
+    color: white;
+    border-radius: 3px;
+    /*border: 1px solid grey;*/
+ }
 
+/* buttons div */
+.buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+    .operators, .history {
+      /*border: 1px solid grey;*/
+     
+      color: white;
+      padding-left: 20px;
+    }
 
+      .history {
+        background-color: #222222;
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-basis: 41%;
+      }
+      .operators {
+        flex-basis: 50%;
+      }
 
-/** MEDIA QUERIES*/
+      .btnOperator {
+        width: 53px;
+        height: 53px;
+        background-color: #222222;
+        color: white;
+        border-radius: 3px;
+        border: 2px solid #222222;
+        margin-bottom: 4px;
+        font-size: 1.7rem;
+      }
+      .btnLong {
+        width: 110px;
+        height: 53px;
+        background-color: #222222;
+        color: white;
+        border-radius: 3px;
+        border: 2px solid #222222;
+        margin-bottom: 4px;
+        font-size: 1.7rem;
+      }
+
+/* MEDIA QUERIES*/
 @media screen and (max-width: 500px){
- 
+  .calcWrap {
+    width: 400px;
+    margin-top: 30px;
+  }
+  .operators {
+     flex-basis: 25%;
+  }
+  .history {
+    flex-basis: 56%;
+  }
+}
+@media screen and (max-width: 400px){
+  .calcWrap {
+    width: 300px;
+  }
+  .form input {
+    margin-top: 5px;
+  }
+  .operators {
+     flex-basis: 100%;
+     margin-bottom: 5px;
+  }
+  .history {
+    flex-basis: 100%;
+  }
+   .btnOperator {
+        width: 60px;
+        height: 60px;
+    }
+     .btnLong {
+        width: 124px;
+        height: 60px;
+    }
+}
+@media screen and (max-width: 300px){
+  .calcWrap {
+    width: 250px;
+    margin-top: 20px;
+  }
+  .resultScreen {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .innerResult {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .form {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .operators, .history {
+    padding-left: 0;
+  }
+  .history {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .btnOperator {
+        width: 59px;
+        height: 59px;
+    }
+     .btnLong {
+        width: 119px;
+        height: 59px;
+    }
+  
 }

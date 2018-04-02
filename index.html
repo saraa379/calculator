@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculator-Lab4-Sara</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -17,16 +17,49 @@
         
         <div class="calcWrap">
           <h1>Miniräknare</h1>
+
           <div class="resultScreen">
             <div id="allOperation" class="innerResult">
-              
+              0
             </div>
             <div id="result" class="innerResult">
               0
             </div>
-
-            
           </div><!--end of resultScreen -->
+
+          <div class="form">
+              <label for="number">Skriv nummer</label>
+              <input type = "text" name="number" id="inputNumber"/>
+              <button id="btnEnter" v-on:click="saveNumber">Lägg till</button>
+          </div><!--end of form -->
+
+          <div class="buttons">
+
+            <div class="operators">
+              <div class="row1">
+                <button class="btnOperator">+</button>
+                <button class="btnOperator">-</button>
+                <button class="btnLong">C</button>
+              </div>
+              <div class="row2">
+                <button class="btnOperator">x</button>
+                <button class="btnOperator">÷</button>
+                <button class="btnLong">=</button>
+              </div>
+              <div class="row3">
+                <button class="btnOperator">x²</button>
+                <button class="btnOperator">√</button>
+              </div>
+            </div>
+
+            <div class="history">
+              <p>Historik</p>
+              <div class="historyContent">
+                <p>History comes here</p>                
+              </div>
+              
+            </div>
+          </div><!--end of buttons -->
           
         </div><!--end of calcWrap -->
 
