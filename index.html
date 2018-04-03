@@ -37,14 +37,14 @@
 
             <div class="operators">
               <div class="row1">
-                <button class="btnOperator">+</button>
+                <button class="btnOperator" v-on:click="add">+</button>
                 <button class="btnOperator">-</button>
-                <button class="btnLong">C</button>
+                <button class="btnLong" v-on:click="clear">C</button>
               </div>
               <div class="row2">
                 <button class="btnOperator">x</button>
                 <button class="btnOperator">÷</button>
-                <button class="btnLong">=</button>
+                <button class="btnLong" v-on:click="calcFinal">=</button>
               </div>
               <div class="row3">
                 <button class="btnOperator">x²</button>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="history">
-              <p>Historik</p>
+              <p>Tidigare räkningar</p>
               <div class="historyContent">
                 <p>History comes here</p>                
               </div>  
