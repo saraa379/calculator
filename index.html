@@ -13,23 +13,23 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
         
         <div class="calcWrap">
           <h1>Miniräknare</h1>
 
           <div class="resultScreen">
             <div id="allOperation" class="innerResult">
-              0
+              {{tempCalc}}
             </div>
             <div id="result" class="innerResult">
-              0
+              {{result}}
             </div>
           </div><!--end of resultScreen -->
 
           <div class="form">
               <label for="number">Skriv nummer</label>
-              <input type = "text" name="number" id="inputNumber"/>
+              <input id="inputNumber" v-model="inputNr" type="text" name="number"/>
               <button id="btnEnter" v-on:click="saveNumber">Lägg till</button>
           </div><!--end of form -->
 
@@ -56,9 +56,9 @@
               <p>Historik</p>
               <div class="historyContent">
                 <p>History comes here</p>                
-              </div>
-              
-            </div>
+              </div>  
+            </div><!--end of buttons -->
+
           </div><!--end of buttons -->
           
         </div><!--end of calcWrap -->

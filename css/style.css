@@ -1,3 +1,4 @@
+/*General styles*/
 * {
   box-sizing: border-box;
 }
@@ -13,6 +14,10 @@ body{
   height: 100%;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
+}
+
+.white {
+  color: white;
 }
 
 .calcWrap {
@@ -49,7 +54,6 @@ h1 {
 }
 #allOperation {
   font-size: 1.5rem;
-  color: #222222;
 }
 #result {
   font-size: 2rem;

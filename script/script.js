@@ -22,12 +22,23 @@ window.addEventListener('load', () => {
 			lastInput: "",
 			lastOperator: "",
 			lastNumber: "",
-			result: ""
+			result: 0,
+			inputNr: "",
+			tempCalc: ""
 		}, // data
 
 		methods: {
 			saveNumber: function(event) {
-				this.displayStatus = true;
+				let nr = Number(this.inputNr);
+				this.lastInput = nr;
+				this.lastNumber = nr;
+
+				if (this.lastOperator == "") {
+					this.tempCalc = nr;
+					this.result = nr;
+				}
+
+				this.inputNr = "";
 			},
 			hide: function(event) {
 				this.displayStatus = false;
