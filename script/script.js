@@ -20,11 +20,9 @@ window.addEventListener('load', () => {
 	let vm = new Vue({
 		el: '#root',
 		data: {
-			lastInput: "",
 			lastOperator: "",
 			lastNumber: "",
 			result: 0,
-			resultFinal: 0,
 			inputNr: "",
 			tempCalc: "",
 			counter: 0
@@ -33,18 +31,20 @@ window.addEventListener('load', () => {
 		methods: {
 			saveNumber: function(event) {
 				let nr = Number(this.inputNr);
-				this.lastInput = "number";
 				this.lastNumber = nr;
 				this.counter = this.counter + 1;
-				this.result = nr;
-
+				
 				if (this.lastOperator == "") {
+					this.result = nr;
 					this.tempCalc = nr;
-					this.resultFinal = nr;
-					this.lastNumber = nr;
-				} else if (this.lastOperator == "add") {
+					//this.resultFinal = nr;
+				} else if (this.lastOperator == "add"){
 					this.tempCalc += " " + nr;
-				}
+					this.result = this.result + nr;
+				} else if ( this.lastOperator == "subtract") {
+					this.tempCalc += " " + nr;
+					this.result = this.result - nr;
+				} 
 
 				this.inputNr = "";
 			},
@@ -52,39 +52,49 @@ window.addEventListener('load', () => {
 				this.lastInput = "";
 				this.lastOperator = "";
 				this.result = 0;
-				this.resultFinal = 0;
 				this.inputNr = "";
 				this.tempCalc = "";
 				this.counter = 0;
 				this.lastNumber = "";
 			},
 			add: function(event) {
+				if (this.counter > 3) {
+					this.calcTemp();
+				}
 				this.lastOperator = "add";
 				this.tempCalc += " +";
-				this.lastInput = "operator";
 				this.counter = this.counter + 1;
+				
+			},
+			subtract: function(event) {
 				if (this.counter > 3) {
-					this.resultFinal = this.resultFinal + this.lastNumber;
-					this.result = this.resultFinal;
+					this.calcTemp();
 				}
+				this.lastOperator = "subtract";
+				this.tempCalc += " -";
+				this.counter = this.counter + 1;
+				
 			},
 			calcFinal: function(event) {
-				switch (this.lastOperator) {
-					case "add":
-						this.resultFinal = this.resultFinal + this.lastNumber;
-						this.tempCalc += " = " + this.resultFinal; 
-					    break;
-					case "minus":
-					    console.log("minus");
-					    break;
-					} //switch
+				this.tempCalc += " = " + this.result;
+
 				//Add calculation into db
 				if (this.tempCalc != "") {
 				      db.ref('calc/').push(this.tempCalc);
 		    	} //end of if
 
-				//clear the field
-				this.clear();
+			},
+			calcTemp: function(event) {
+				switch (this.lastOperator) {
+					case "add":
+						this.result = this.result + this.lastNumber;
+					    break;
+					case "subtract":
+					    this.result = this.result - this.lastNumber;
+					    break;
+				} //switch
+			},
+			getCalcFromDb: function(event) {
 			}
 		}  // methods
 	});  // Vue
