@@ -26,7 +26,8 @@ window.addEventListener('load', () => {
 			inputNr: "",
 			tempCalc: "",
 			counter: 0,
-			squareRootVisible: false
+			squareRootVisible: false,
+			calculations: []
 		}, // data
 
 		methods: {
@@ -56,6 +57,7 @@ window.addEventListener('load', () => {
 				}
 
 				this.inputNr = "";
+				this.checkPositivResult();
 			},
 			clear: function(event) {
 				this.lastInput = "";
@@ -89,8 +91,14 @@ window.addEventListener('load', () => {
 				if (this.counter > 3) {
 					this.calcTemp();
 				}
+
+				if (this.counter < 2) {
+					this.tempCalc += " x";
+				} else {
+					this.tempCalc = "(" + this.tempCalc + ") x";
+				}
+
 				this.lastOperator = "multiply";
-				this.tempCalc = "(" + this.tempCalc + ") x";
 				this.counter = this.counter + 1;
 				
 			},
@@ -98,14 +106,35 @@ window.addEventListener('load', () => {
 				if (this.counter > 3) {
 					this.calcTemp();
 				}
+
+				if (this.counter < 2) {
+					this.tempCalc += " ÷";
+				} else {
+					this.tempCalc = "(" + this.tempCalc + ") ÷";
+				}
+
 				this.lastOperator = "divide";
-				this.tempCalc = "(" + this.tempCalc + ") ÷";
 				this.counter = this.counter + 1;
 				
 			},
 			square: function(event) {
 				this.lastOperator = "square";
-				this.tempCalc = "(" + this.tempCalc + ")²";
+
+				if (this.counter < 2) {
+					this.tempCalc += "²";
+				} else {
+					this.tempCalc = "(" + this.tempCalc + ")²";
+				}
+
+				this.counter = this.counter + 1;
+				this.calcTemp();
+				
+			},
+			squareRoot: function(event) {
+				this.lastOperator = "squareRoot";
+
+				this.tempCalc = "(" + this.tempCalc + ")√";
+
 				this.counter = this.counter + 1;
 				this.calcTemp();
 				
@@ -117,6 +146,9 @@ window.addEventListener('load', () => {
 				if (this.tempCalc != "") {
 				      db.ref('calc/').push(this.tempCalc);
 		    	} //end of if
+
+		    	this.getCalcFromDb();
+		    	console.log(this.calculations);
 
 			},
 			calcTemp: function(event) {
@@ -136,9 +168,36 @@ window.addEventListener('load', () => {
 					case "square":
 					    this.result = this.result * this.result;
 					    break;
+					case "squareRoot":
+					    this.result = Math.sqrt(this.result);
+					    break;
 				} //switch
+				this.checkPositivResult();
 			},
 			getCalcFromDb: function(event) {
+				db.ref('calc/').limitToLast(3).on('value', function(snapshot) {
+				    let data = snapshot.val();
+
+				    let tempArray = [];
+
+				    for(let child in data){
+				      let r = data[child];
+				      console.log('Child: ' + r);
+
+				      //Adding messages into array
+				      tempArray.push(r);
+				    }
+				    //console.log(tempArray);
+				    this.calculations = tempArray;
+
+				  });//end of db.ref
+			},
+			checkPositivResult: function(event) {
+				if (this.result > 0){
+					this.squareRootVisible = true;
+				} else {
+					this.squareRootVisible = false;
+				}
 			}
 		}  // methods
 	});  // Vue

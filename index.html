@@ -48,16 +48,16 @@
               </div>
               <div class="row3">
                 <button class="btnOperator" v-on:click="square">x²</button>
-                <button class="btnOperator" v-if="squareRootVisible">√</button>
+                <button class="btnOperator" v-if="squareRootVisible" v-on:click="squareRoot">√</button>
               </div>
             </div>
 
             <div class="history">
               <p>Tidigare räkningar</p>
               <div class="historyContent">
-                <p>History comes here</p>                
+                <p v-for="calc in calculations">{{ calc }}</p>                
               </div>  
-            </div><!--end of buttons -->
+            </div><!--end of history -->
 
           </div><!--end of buttons -->
           
