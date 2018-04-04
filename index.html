@@ -42,13 +42,13 @@
                 <button class="btnLong" v-on:click="clear">C</button>
               </div>
               <div class="row2">
-                <button class="btnOperator">x</button>
-                <button class="btnOperator">÷</button>
+                <button class="btnOperator" v-on:click="multiply">x</button>
+                <button class="btnOperator" v-on:click="divide">÷</button>
                 <button class="btnLong" v-on:click="calcFinal">=</button>
               </div>
               <div class="row3">
-                <button class="btnOperator">x²</button>
-                <button class="btnOperator">√</button>
+                <button class="btnOperator" v-on:click="square">x²</button>
+                <button class="btnOperator" v-if="squareRootVisible">√</button>
               </div>
             </div>
 

@@ -25,7 +25,8 @@ window.addEventListener('load', () => {
 			result: 0,
 			inputNr: "",
 			tempCalc: "",
-			counter: 0
+			counter: 0,
+			squareRootVisible: false
 		}, // data
 
 		methods: {
@@ -45,6 +46,14 @@ window.addEventListener('load', () => {
 					this.tempCalc += " " + nr;
 					this.result = this.result - nr;
 				} 
+				else if ( this.lastOperator == "multiply") {
+					this.tempCalc += " " + nr;
+					this.result = this.result * nr;
+				} 
+				else if ( this.lastOperator == "divide") {
+					this.tempCalc += " " + nr;
+					this.result = this.result / nr;
+				}
 
 				this.inputNr = "";
 			},
@@ -56,6 +65,7 @@ window.addEventListener('load', () => {
 				this.tempCalc = "";
 				this.counter = 0;
 				this.lastNumber = "";
+				this.squareRootVisible = false;
 			},
 			add: function(event) {
 				if (this.counter > 3) {
@@ -75,6 +85,31 @@ window.addEventListener('load', () => {
 				this.counter = this.counter + 1;
 				
 			},
+			multiply: function(event) {
+				if (this.counter > 3) {
+					this.calcTemp();
+				}
+				this.lastOperator = "multiply";
+				this.tempCalc = "(" + this.tempCalc + ") x";
+				this.counter = this.counter + 1;
+				
+			},
+			divide: function(event) {
+				if (this.counter > 3) {
+					this.calcTemp();
+				}
+				this.lastOperator = "divide";
+				this.tempCalc = "(" + this.tempCalc + ") ÷";
+				this.counter = this.counter + 1;
+				
+			},
+			square: function(event) {
+				this.lastOperator = "square";
+				this.tempCalc = "(" + this.tempCalc + ")²";
+				this.counter = this.counter + 1;
+				this.calcTemp();
+				
+			},
 			calcFinal: function(event) {
 				this.tempCalc += " = " + this.result;
 
@@ -92,11 +127,19 @@ window.addEventListener('load', () => {
 					case "subtract":
 					    this.result = this.result - this.lastNumber;
 					    break;
+					case "multiply":
+					    this.result = this.result * this.lastNumber;
+					    break;
+					case "divide":
+					    this.result = this.result / this.lastNumber;
+					    break;
+					case "square":
+					    this.result = this.result * this.result;
+					    break;
 				} //switch
 			},
 			getCalcFromDb: function(event) {
 			}
 		}  // methods
 	});  // Vue
-
 });  // window load
