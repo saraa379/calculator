@@ -142,11 +142,19 @@ h1 {
     margin-top: 30px;
   }
   .operators {
-     flex-basis: 25%;
+     flex-basis: 45%;
   }
   .history {
-    flex-basis: 56%;
+    flex-basis: 44%;
   }
+  .btnOperator {
+        width: 76px;
+        height: 76px;
+    }
+     .btnLong {
+        width: 156px;
+        height: 76px;
+    }
 }
 @media screen and (max-width: 400px){
   .calcWrap {
@@ -196,12 +204,12 @@ h1 {
     margin-left: 0;
   }
   .btnOperator {
-        width: 59px;
-        height: 59px;
+        width: 58px;
+        height: 58px;
     }
      .btnLong {
-        width: 119px;
-        height: 59px;
+        width: 120px;
+        height: 58px;
     }
   
 }
