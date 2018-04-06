@@ -12,8 +12,6 @@
   firebase.initializeApp(config);
   const db = firebase.database();
 
-/*global variables*/
-var calcList = "";
 
 
 window.addEventListener('load', () => {
