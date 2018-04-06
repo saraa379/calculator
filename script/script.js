@@ -12,7 +12,8 @@
   firebase.initializeApp(config);
   const db = firebase.database();
 
-
+/*global variables*/
+var calcList = "";
 
 
 window.addEventListener('load', () => {
@@ -27,7 +28,7 @@ window.addEventListener('load', () => {
 			tempCalc: "",
 			counter: 0,
 			squareRootVisible: false,
-			calculations: []
+			calculations: ""
 		}, // data
 
 		methods: {
@@ -148,7 +149,7 @@ window.addEventListener('load', () => {
 		    	} //end of if
 
 		    	this.getCalcFromDb();
-		    	console.log(this.calculations);
+		    	//console.log(this.calculations);
 
 			},
 			calcTemp: function(event) {
@@ -175,20 +176,21 @@ window.addEventListener('load', () => {
 				this.checkPositivResult();
 			},
 			getCalcFromDb: function(event) {
+
 				db.ref('calc/').limitToLast(3).on('value', function(snapshot) {
 				    let data = snapshot.val();
 
-				    let tempArray = [];
+				    var tempArray = [];
 
 				    for(let child in data){
 				      let r = data[child];
-				      console.log('Child: ' + r);
+				      //console.log('Child: ' + r);
 
 				      //Adding messages into array
 				      tempArray.push(r);
 				    }
 				    //console.log(tempArray);
-				    this.calculations = tempArray;
+				   vm.calculations = tempArray.slice();
 
 				  });//end of db.ref
 			},
@@ -201,4 +203,6 @@ window.addEventListener('load', () => {
 			}
 		}  // methods
 	});  // Vue
+
+	calcList = vm.getCalcFromDb();
 });  // window load
