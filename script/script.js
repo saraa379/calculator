@@ -202,5 +202,5 @@ window.addEventListener('load', () => {
 		}  // methods
 	});  // Vue
 
-	calcList = vm.getCalcFromDb();
+	vm.getCalcFromDb();
 });  // window load
